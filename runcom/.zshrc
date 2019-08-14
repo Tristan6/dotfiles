@@ -1,4 +1,4 @@
-export DOTFILES_DIR="/Users/tealiumemployee/.dotfiles"
+export DOTFILES_DIR="/Users/tealiumemployee/dotfiles"
 
 for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,alias,function}; do
   [ -f "$DOTFILE" ] && source "$DOTFILE"
