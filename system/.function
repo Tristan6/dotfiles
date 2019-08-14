@@ -1,0 +1,66 @@
+aws_login()
+{
+    local profile=$1
+    eval $(aws ecr get-login --no-include-email --region us-east-1 --profile $profile)
+}
+
+# Docker sandbox commands
+dbuild()
+{
+    local repository=$1
+    local dockerfile_path='/Users/tealiumemployee/tealium-workspace/python-platform/tealium_udh'
+    docker build -t $repository $dockerfile_path
+}
+
+dtag() 
+{
+    local repository=$1
+    local image_tag=$2
+    local environment=$3
+    docker tag $repository:latest $environment.dkr.ecr.us-east-1.amazonaws.com/$repository:$image_tag
+}
+
+dpush() 
+{
+    local repository=$1
+    local image_tag=$2
+    local environment=$3
+    docker push $environment.dkr.ecr.us-east-1.amazonaws.com/$repository:$image_tag
+}
+
+dockerbtp() 
+{
+    # default values
+    local repository='dev-elainechao'
+    local image_tag='ecs-test-2'
+    local environment='516332124665' #sandbox
+
+    while [ $# -gt 0 ]
+    do
+        case "$1" in
+            --repository | -r)
+                repository=$2
+                ;;
+            --tag | -t)
+                image_tag=$2
+                ;;
+            --environment | -e)
+                if [ "$2" -eq "sandbox" ]; then
+                    environment='516332124665'
+                elif [ "$2" -eq "preprod" ]; then
+                    environment='916122220265'
+                fi
+                ;;
+            *)
+                echo "usage: dflow [options]"
+                return 1
+                ;;
+        esac
+        shift # past argument
+        shift # past value
+    done
+
+    dbuild $repository
+    dtag $repository $image_tag $environment
+    dpush $repository $image_tag $environment
+}

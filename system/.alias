@@ -1,0 +1,18 @@
+alias zreload='source ~/.zshrc && echo Zsh config reloaded'
+alias zprof="${EDITOR:-code} ~/.zshrc && source ~/.zshrc && echo Zsh config edited and reloaded."
+
+# Clear the screen
+alias c="clear"
+alias cl="clear;ls;pwd"
+
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gs="git status"
+alias ga="git add"
+alias gp="git pull"
+alias gpu="git push"
+alias mg="git merge"
+
+alias gpall="find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;"
+
+alias fmt="terraform fmt"
