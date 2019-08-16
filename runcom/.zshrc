@@ -17,12 +17,6 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=() #Default (status root_indicator background_jobs history time)
 
-# segment/sub segment separators
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B0'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='\uE0B2'
-POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='\uE0B1'
-POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='\uE0B3'	
-
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
