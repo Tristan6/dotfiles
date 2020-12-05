@@ -15,7 +15,9 @@ POWERLEVEL9K_MODE=awesome-fontconfig
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=() #Default (status root_indicator background_jobs history time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline)
+POWERLEVEL9K_DISABLE_RPROMPT=true
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=() #Default (status root_indicator background_jobs history time)
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -29,6 +31,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 source ~/fonts/*.sh
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
