@@ -3,10 +3,15 @@
 # Ensuring that apt supports https
 sudo apt update
 sudo apt upgrade
-apt-get install -y gnupg-agent software-properties-common apt-transport-https wget curl
+
+apt-get install -y ubuntu-restricted-extras \
+gnupg-agent \
+software-properties-common \
+apt-transport-https \
+wget curl
 
 # Download OpenVPN
-echo "deb http://build.openvpn.net/debian/openvpn/stable xenial main" >/etc/apt/sources.list.d/openvpn.list
+echo "deb http://build.openvpn.net/debian/openvpn/stable xenial main" > /etc/apt/sources.list.d/openvpn.list
 wget -O - https://swupdate.openvpn.net/repos/repo-public.gpg | apt-key add -
 apt-get update
 apt-get install -y openvpn iptables openssl ca-certificates
@@ -60,6 +65,8 @@ sudo apt-get update && sudo apt-get install spotify-client
 
 # Download Git & ZSH
 apt-get install -y git
+git config --global user.email "tristanmacelli@gmail.com"
+
 apt-get install -y zsh
 zsh --version
 # Make zsh the default shell for the current user
@@ -85,6 +92,12 @@ cd -
 cd ~/go/src
 git clone https://github.com/Tristan6/server-side-mirror.git
 cd -
+
+# Install AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+rm awscliv2.zip
+sudo ./aws/install
 
 # Download gparted in case you need to repartition the Ubuntu volume
 mkdir software; cd software
